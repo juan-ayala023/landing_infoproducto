@@ -102,7 +102,7 @@ function Navbar() {
 // ─── Hero ────────────────────────────────────────────────────────────────────
 function Hero() {
   return (
-    <section style={{ position:'relative', paddingTop:160, paddingBottom:80, overflow:'hidden', background:C.black }}>
+    <section className="hero-section" style={{ position:'relative', paddingTop:160, paddingBottom:80, overflow:'hidden', background:C.black }}>
       {/* Glow BG */}
       <div style={{
         position:'absolute', top:'50%', left:'50%', transform:'translate(-50%,-50%)',
@@ -110,10 +110,10 @@ function Hero() {
         background:`radial-gradient(circle at center, ${C.purple}25 0%, transparent 70%)`,
       }}/>
 
-      <div style={{ maxWidth:1280, margin:'0 auto', padding:'0 32px', textAlign:'center', position:'relative', zIndex:1 }}>
+      <div className="hero-container" style={{ maxWidth:1280, margin:'0 auto', padding:'0 32px', textAlign:'center', position:'relative', zIndex:1 }}>
         <motion.div initial={{opacity:0,y:30}} animate={{opacity:1,y:0}} transition={{duration:.8}}>
           {/* Badge */}
-          <span style={{
+          <span className="hero-badge" style={{
             display:'inline-block', padding:'8px 18px', borderRadius:9999,
             border:`1px solid ${C.purple}50`,
             background:`${C.purple}18`,
@@ -124,7 +124,7 @@ function Hero() {
           </span>
 
           {/* Headline */}
-          <h1 style={{
+          <h1 className="hero-headline" style={{
             fontFamily:'Syne,sans-serif', fontWeight:900, fontSize:'clamp(48px,8vw,96px)',
             lineHeight:.95, letterSpacing:'-3px', textTransform:'uppercase',
             color:'#fff', marginBottom:28, marginTop:0,
@@ -133,14 +133,14 @@ function Hero() {
             <span className="text-gradient">Dinero Automatizada</span>
           </h1>
 
-          <p style={{ maxWidth:640, margin:'0 auto', fontSize:18, color:'rgba(255,255,255,0.45)', lineHeight:1.7, marginBottom:48 }}>
+          <p className="hero-subtitle" style={{ maxWidth:640, margin:'0 auto', fontSize:18, color:'rgba(255,255,255,0.45)', lineHeight:1.7, marginBottom:48 }}>
             Transforma cualquier conocimiento en una factoría rentable de infoproductos.
             Investigación, creación, branding y ventas. Todo lo hace{' '}
             <strong style={{ color:'#fff', fontStyle:'italic' }}>ZENIX</strong> por ti.
           </p>
 
           {/* CTAs */}
-          <div style={{ display:'flex', gap:16, justifyContent:'center', flexWrap:'wrap' }}>
+          <div className="hero-ctas" style={{ display:'flex', gap:16, justifyContent:'center', flexWrap:'wrap' }}>
             <motion.button whileHover={{scale:1.05}} whileTap={{scale:.95}} style={{
               padding:'18px 40px', borderRadius:9999, border:'none', cursor:'pointer',
               background:C.purple, color:'#fff', fontWeight:900, fontSize:17,
@@ -165,8 +165,8 @@ function Hero() {
 
         {/* Dashboard preview */}
         <motion.div initial={{opacity:0,scale:.9}} animate={{opacity:1,scale:1}} transition={{delay:.5,duration:.8}}
-          style={{ marginTop:80, position:'relative', maxWidth:900, margin:'80px auto 0' }}>
-          <div style={{
+          className="dashboard-preview" style={{ marginTop:80, position:'relative', maxWidth:900, margin:'80px auto 0' }}>
+          <div className="dashboard-box" style={{
             aspectRatio:'16/9', borderRadius:32, overflow:'hidden',
             background:'rgba(138,85,247,0.06)',
             border:`1px solid ${C.purple}30`,
@@ -180,7 +180,7 @@ function Hero() {
               backgroundSize:'40px 40px',
             }}/>
             {/* Center icon */}
-            <div style={{ zIndex:1, color:`${C.purple}80`, animation:'float 6s ease-in-out infinite' }}>
+            <div className="dashboard-center-icon" style={{ zIndex:1, color:`${C.purple}80`, animation:'float 6s ease-in-out infinite' }}>
               <Cpu size={120} strokeWidth={.6}/>
             </div>
             {/* Floating data pills */}
@@ -190,7 +190,7 @@ function Hero() {
               { label:'Conversión promedio', value:'12.4%', bottom:'18%', left:'8%' },
               { label:'Nichos activos', value:'38', bottom:'18%', right:'8%' },
             ].map((p,i)=>(
-              <motion.div key={i} initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:1+i*.2}}
+              <motion.div key={i} className="dashboard-pill" initial={{opacity:0,y:10}} animate={{opacity:1,y:0}} transition={{delay:1+i*.2}}
                 style={{
                   position:'absolute', ...(p.top?{top:p.top}:{}), ...(p.bottom?{bottom:p.bottom}:{}),
                   ...(p.left?{left:p.left}:{}), ...(p.right?{right:p.right}:{}),
@@ -198,8 +198,8 @@ function Hero() {
                   border:`1px solid ${C.border}`, borderRadius:16, padding:'12px 20px',
                   minWidth:130,
                 }}>
-                <div style={{ fontSize:11, color:'rgba(255,255,255,0.4)', fontWeight:700, letterSpacing:'0.1em', textTransform:'uppercase', marginBottom:4 }}>{p.label}</div>
-                <div style={{ fontSize:22, color:'#fff', fontFamily:'Syne,sans-serif', fontWeight:800 }}>{p.value}</div>
+                <div className="pill-label" style={{ fontSize:11, color:'rgba(255,255,255,0.4)', fontWeight:700, letterSpacing:'0.1em', textTransform:'uppercase', marginBottom:4 }}>{p.label}</div>
+                <div className="pill-value" style={{ fontSize:22, color:'#fff', fontFamily:'Syne,sans-serif', fontWeight:800 }}>{p.value}</div>
               </motion.div>
             ))}
           </div>
@@ -223,6 +223,7 @@ function ProcessCard({ icon:Icon, title, desc, n, delay }) {
   const [hov, setHov] = useState(false);
   return (
     <motion.div
+      className="process-card"
       initial={{opacity:0,y:30}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay,duration:.5}}
       onMouseEnter={()=>setHov(true)} onMouseLeave={()=>setHov(false)}
       style={{
@@ -256,11 +257,11 @@ function ProcessCard({ icon:Icon, title, desc, n, delay }) {
 
 function ProcessSection() {
   return (
-    <section id="sistema" style={{ padding:'120px 0', background:C.black }}>
+    <section id="sistema" className="process-section" style={{ padding:'120px 0', background:C.black }}>
       <div style={{ maxWidth:1280, margin:'0 auto', padding:'0 32px' }}>
-        <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end', marginBottom:80, gap:32, flexWrap:'wrap' }}>
+        <div className="process-header" style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end', marginBottom:80, gap:32, flexWrap:'wrap' }}>
           <div style={{ maxWidth:580 }}>
-            <h2 style={{
+            <h2 className="process-title" style={{
               fontFamily:'Syne,sans-serif', fontWeight:900,
               fontSize:'clamp(40px,6vw,72px)', lineHeight:.95,
               textTransform:'uppercase', letterSpacing:'-2px', color:'#fff', margin:'0 0 20px',
@@ -277,7 +278,7 @@ function ProcessSection() {
           </div>
         </div>
 
-        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(320px,1fr))', gap:24 }}>
+        <div className="process-grid" style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(320px,1fr))', gap:24 }}>
           {STEPS.map((s,i)=><ProcessCard key={i} {...s} n={i+1} delay={i*.1}/>)}
         </div>
       </div>
@@ -289,7 +290,7 @@ function ProcessSection() {
 function ShowCard({ label, name, sub, accentColor, dark, FloatIcon }) {
   const [hov, setHov] = useState(false);
   return (
-    <div onMouseEnter={()=>setHov(true)} onMouseLeave={()=>setHov(false)}
+    <div className="show-card" onMouseEnter={()=>setHov(true)} onMouseLeave={()=>setHov(false)}
       style={{ borderRadius:40, overflow:'hidden', aspectRatio:'4/3', position:'relative', cursor:'pointer', border:`1px solid ${C.border}` }}>
       {/* BG */}
       <div style={{
@@ -301,7 +302,7 @@ function ShowCard({ label, name, sub, accentColor, dark, FloatIcon }) {
         transform: hov ? 'scale(1.04)' : 'scale(1)',
       }}/>
       {/* Float icon */}
-      <div style={{
+      <div className="show-card-float-icon" style={{
         position:'absolute', inset:0, display:'flex', alignItems:'center', justifyContent:'center',
         color: dark ? `${C.purple}30` : `${accentColor}15`,
         transform: hov ? 'scale(1.1)' : 'scale(1)', transition:'transform .6s ease',
@@ -320,11 +321,11 @@ function ShowCard({ label, name, sub, accentColor, dark, FloatIcon }) {
         background:'linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 50%)',
       }}/>
       {/* Content */}
-      <div style={{ position:'absolute', bottom:40, left:40, right:40, zIndex:2 }}>
+      <div className="show-card-content" style={{ position:'absolute', bottom:40, left:40, right:40, zIndex:2 }}>
         <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end' }}>
           <div>
             <span style={{ fontSize:10, fontWeight:700, letterSpacing:'0.25em', textTransform:'uppercase', color:accentColor, display:'block', marginBottom:8 }}>{label}</span>
-            <h3 style={{ fontFamily:'Syne,sans-serif', fontWeight:900, fontSize:36, textTransform:'uppercase', letterSpacing:'-1px', color:'#fff', margin:0 }}>{name}</h3>
+            <h3 className="show-card-name" style={{ fontFamily:'Syne,sans-serif', fontWeight:900, fontSize:36, textTransform:'uppercase', letterSpacing:'-1px', color:'#fff', margin:0 }}>{name}</h3>
             <p style={{ color:'rgba(255,255,255,0.5)', fontSize:12, fontWeight:600, letterSpacing:'0.15em', textTransform:'uppercase', fontStyle:'italic', marginTop:8, marginBottom:0 }}>{sub}</p>
           </div>
           <div style={{
@@ -343,17 +344,17 @@ function ShowCard({ label, name, sub, accentColor, dark, FloatIcon }) {
 
 function Showcase() {
   return (
-    <section id="portafolio" style={{ padding:'120px 0', background:C.gray }}>
+    <section id="portafolio" className="showcase-section" style={{ padding:'120px 0', background:C.gray }}>
       <div style={{ maxWidth:1280, margin:'0 auto', padding:'0 32px' }}>
         <div style={{ textAlign:'center', marginBottom:72 }}>
-          <h2 style={{ fontFamily:'Syne,sans-serif', fontWeight:900, fontSize:'clamp(36px,5vw,64px)', textTransform:'uppercase', letterSpacing:'-2px', margin:'0 0 16px', color:'#fff' }}>
+          <h2 className="showcase-title" style={{ fontFamily:'Syne,sans-serif', fontWeight:900, fontSize:'clamp(36px,5vw,64px)', textTransform:'uppercase', letterSpacing:'-2px', margin:'0 0 16px', color:'#fff' }}>
             Éxitos de la <span className="text-gradient">Fábrica</span>
           </h2>
           <p style={{ color:'rgba(255,255,255,0.35)', maxWidth:500, margin:'0 auto', fontSize:16 }}>
             Productos reales lanzados y escalados por los agentes de ZENIX en menos de 48 horas.
           </p>
         </div>
-        <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(380px,1fr))', gap:32 }}>
+        <div className="showcase-grid" style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(380px,1fr))', gap:32 }}>
           <ShowCard label="Opción A" name="Neural Academy" sub="Cosmos Digital · Conocimiento como energía" accentColor={C.purple} dark FloatIcon={Globe}/>
           <ShowCard label="Opción B" name="Paper & Ink" sub="Editorial Clásica · Sabiduría Atemporal" accentColor="#8B6914" dark={false} FloatIcon={Layers}/>
         </div>
@@ -365,14 +366,14 @@ function Showcase() {
 // ─── CTA / Pricing ───────────────────────────────────────────────────────────
 function CTA() {
   return (
-    <section id="precios" style={{ padding:'140px 0', background:C.black, position:'relative', overflow:'hidden' }}>
+    <section id="precios" className="cta-section" style={{ padding:'140px 0', background:C.black, position:'relative', overflow:'hidden' }}>
       {/* Glow orb */}
       <div style={{
         position:'absolute', bottom:'-30%', right:'-10%', width:800, height:800, borderRadius:'50%',
         background:`radial-gradient(circle, ${C.purple}15, transparent 70%)`, pointerEvents:'none',
       }}/>
       <div style={{ maxWidth:1100, margin:'0 auto', padding:'0 32px', position:'relative', zIndex:1 }}>
-        <div style={{
+        <div className="cta-box" style={{
           background:C.card, backdropFilter:'blur(24px)',
           border:`1px solid ${C.border}`,
           borderRadius:60, padding:'clamp(48px,6vw,96px)',
@@ -380,7 +381,7 @@ function CTA() {
           boxShadow:`0 0 80px ${C.purple}10`,
         }}>
           <motion.div initial={{opacity:0,scale:.95}} whileInView={{opacity:1,scale:1}} viewport={{once:true}}>
-            <h2 style={{
+            <h2 className="cta-title" style={{
               fontFamily:'Syne,sans-serif', fontWeight:900,
               fontSize:'clamp(36px,6vw,72px)', lineHeight:.95,
               textTransform:'uppercase', letterSpacing:'-2px',
@@ -388,19 +389,19 @@ function CTA() {
             }}>
               ¿Listo para <em style={{color:C.purple}}>Automatizar</em><br/>tu destino financiero?
             </h2>
-            <p style={{ fontSize:18, color:'rgba(255,255,255,0.4)', maxWidth:580, margin:'0 auto 56px', lineHeight:1.7 }}>
+            <p className="cta-subtitle" style={{ fontSize:18, color:'rgba(255,255,255,0.4)', maxWidth:580, margin:'0 auto 56px', lineHeight:1.7 }}>
               El futuro de los infoproductos es autónomo. Deja de trabajar en el negocio y empieza a construir el imperio.
             </p>
 
-            <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))', gap:32, textAlign:'left' }}>
+            <div className="cta-grid" style={{ display:'grid', gridTemplateColumns:'repeat(auto-fit,minmax(300px,1fr))', gap:32, textAlign:'left' }}>
               {/* Plan card */}
-              <div style={{
+              <div className="plan-card" style={{
                 background:'rgba(138,85,247,0.08)', border:`1px solid ${C.purple}40`,
                 borderLeft:`4px solid ${C.purple}`, borderRadius:28, padding:36,
               }}>
                 <div style={{ fontSize:11, fontWeight:700, letterSpacing:'0.2em', textTransform:'uppercase', color:C.purple, marginBottom:16 }}>Plan Industrial</div>
                 <div style={{ display:'flex', alignItems:'baseline', gap:8, marginBottom:28 }}>
-                  <span style={{ fontSize:52, fontWeight:900, fontStyle:'italic', color:'#fff', fontFamily:'Syne,sans-serif' }}>$299</span>
+                  <span className="plan-price" style={{ fontSize:52, fontWeight:900, fontStyle:'italic', color:'#fff', fontFamily:'Syne,sans-serif' }}>$299</span>
                   <span style={{ color:'rgba(255,255,255,0.3)', fontSize:12, fontWeight:700, textTransform:'uppercase', letterSpacing:'0.1em' }}>/ Mes</span>
                 </div>
                 <ul style={{ listStyle:'none', padding:0, margin:'0 0 32px', display:'flex', flexDirection:'column', gap:14 }}>
@@ -423,7 +424,7 @@ function CTA() {
               {/* Features column */}
               <div style={{ display:'flex', flexDirection:'column', justifyContent:'center', gap:28 }}>
                 <div>
-                  <h4 style={{ fontFamily:'Syne,sans-serif', fontWeight:900, fontSize:26, textTransform:'uppercase', letterSpacing:'-0.5px', color:'#fff', margin:'0 0 8px' }}>Máximo Escalamiento</h4>
+                  <h4 className="features-title" style={{ fontFamily:'Syne,sans-serif', fontWeight:900, fontSize:26, textTransform:'uppercase', letterSpacing:'-0.5px', color:'#fff', margin:'0 0 8px' }}>Máximo Escalamiento</h4>
                   <p style={{ color:'rgba(255,255,255,0.35)', fontSize:14, fontStyle:'italic', margin:0, lineHeight:1.6 }}>Para emprendedores seriales que buscan dominar múltiples nichos simultáneamente.</p>
                 </div>
                 {[
@@ -455,7 +456,7 @@ function CTA() {
 function Footer() {
   return (
     <footer style={{ padding:'60px 0', borderTop:`1px solid ${C.border}`, background:C.black }}>
-      <div style={{ maxWidth:1280, margin:'0 auto', padding:'0 32px', display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:24 }}>
+      <div className="footer-inner" style={{ maxWidth:1280, margin:'0 auto', padding:'0 32px', display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:24 }}>
         <div style={{ display:'flex', alignItems:'center', gap:10 }}>
           <div style={{ width:32, height:32, borderRadius:8, background:`${C.purple}30`, display:'flex', alignItems:'center', justifyContent:'center', fontWeight:800, color:'#fff', fontSize:16 }}>Z</div>
           <span style={{ fontFamily:'Syne,sans-serif', fontWeight:800, fontSize:20, letterSpacing:'-0.5px', textTransform:'uppercase', fontStyle:'italic', color:'#fff' }}>Zenix</span>

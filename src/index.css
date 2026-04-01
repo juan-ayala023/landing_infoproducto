@@ -45,7 +45,66 @@ body {
 @media (max-width: 768px) {
   .hidden-mobile { display: none !important; }
   .show-mobile   { display: block !important; }
+
+  /* Hero section */
+  .hero-section { padding-top: 120px !important; padding-bottom: 48px !important; }
+  .hero-headline { font-size: 7.5vw !important; letter-spacing: -1px !important; line-height: 1.05 !important; padding-bottom: 4px !important; padding-left: 0 !important; padding-right: 0 !important; }
+  .hero-container { padding: 0 16px !important; }
+  .hero-subtitle { font-size: 15px !important; margin-bottom: 32px !important; }
+  .hero-ctas { flex-direction: column !important; align-items: stretch !important; }
+  .hero-ctas button { width: 100% !important; justify-content: center !important; font-size: 15px !important; padding: 16px 24px !important; }
+  .hero-badge { font-size: 10px !important; letter-spacing: 0.15em !important; }
+
+  /* Dashboard preview */
+  .dashboard-preview { margin-top: 48px !important; }
+  .dashboard-box { border-radius: 20px !important; }
+  .dashboard-center-icon svg { width: 64px !important; height: 64px !important; }
+  .dashboard-pill { padding: 8px 12px !important; min-width: 100px !important; border-radius: 10px !important; }
+  .dashboard-pill .pill-label { font-size: 8px !important; letter-spacing: 0.05em !important; }
+  .dashboard-pill .pill-value { font-size: 16px !important; }
+
+  /* Process section */
+  .process-section { padding: 64px 0 !important; }
+  .process-header { margin-bottom: 40px !important; }
+  .process-title { font-size: clamp(28px, 8vw, 36px) !important; letter-spacing: -1px !important; word-break: break-word !important; }
+  .process-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+  .process-card { padding: 24px !important; border-radius: 20px !important; }
+  .process-card h3 { font-size: 18px !important; }
+  .process-card p { font-size: 14px !important; }
+
+  /* Showcase section */
+  .showcase-section { padding: 64px 0 !important; }
+  .showcase-title { font-size: 28px !important; }
+  .showcase-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+  .show-card { aspect-ratio: 3/2 !important; border-radius: 24px !important; }
+  .show-card-content { bottom: 24px !important; left: 24px !important; right: 24px !important; }
+  .show-card-name { font-size: 24px !important; }
+  .show-card-float-icon svg { width: 160px !important; height: 160px !important; }
+
+  /* CTA / Pricing section */
+  .cta-section { padding: 64px 0 !important; }
+  .cta-box { border-radius: 28px !important; padding: 32px 20px !important; }
+  .cta-title { font-size: 28px !important; letter-spacing: -1px !important; }
+  .cta-subtitle { font-size: 15px !important; margin-bottom: 32px !important; }
+  .cta-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .plan-card { padding: 24px !important; border-radius: 20px !important; }
+  .plan-price { font-size: 40px !important; }
+  .features-title { font-size: 22px !important; }
+
+  /* Footer */
+  .footer-inner { flex-direction: column !important; text-align: center !important; gap: 20px !important; }
 }
+
+@media (max-width: 400px) {
+  .hero-headline { font-size: 7vw !important; letter-spacing: -0.5px !important; }
+  .process-title { font-size: 26px !important; }
+  .dashboard-pill { padding: 6px 8px !important; min-width: 80px !important; }
+  .dashboard-pill .pill-label { font-size: 7px !important; }
+  .dashboard-pill .pill-value { font-size: 13px !important; }
+  .cta-title { font-size: 24px !important; }
+  .plan-price { font-size: 36px !important; }
+}
+
 @media (min-width: 769px) {
   .show-mobile { display: none !important; }
 }
