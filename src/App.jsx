@@ -261,8 +261,8 @@ function Hero() {
 
           {/* Meta strip */}
           <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{duration:.8,delay:.6}}
-            className="hero-meta" style={{ marginTop:36, display:'flex', alignItems:'center', justifyContent:'center', gap:32 }}>
-            <div style={{ display:'flex', alignItems:'center', gap:-10 }}>
+            className="hero-meta" style={{ marginTop:36, display:'flex', alignItems:'center', justifyContent:'center', gap:18, flexWrap:'wrap' }}>
+            <div style={{ display:'flex', alignItems:'center' }}>
               {['#7C3AED','#38BDF8','#EFE6D2','#F472B6'].map((bg,i)=>(
                 <div key={i} style={{
                   width:28, height:28, borderRadius:'50%', background:bg,
@@ -272,7 +272,7 @@ function Hero() {
                 }}>{['M','J','A','R'][i]}</div>
               ))}
             </div>
-            <div style={{ fontSize:13, color:C.textMut }}>
+            <div style={{ fontSize:13, color:C.textMut, textAlign:'center' }}>
               <strong style={{ color:'#fff', fontWeight:600 }}>+1,247 creadores</strong> ya operando · 4.9 ★
             </div>
           </motion.div>
@@ -370,7 +370,7 @@ function DashboardMockup() {
             </div>
 
             {/* KPI cards */}
-            <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:12 }}>
+            <div className="dash-kpi-grid" style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:12 }}>
               {[
                 { l:'Productos', v:'1,247', d:'+18%', c:C.purple },
                 { l:'Ingresos',  v:'$84.2K',d:'+32%', c:C.blue   },
@@ -392,7 +392,7 @@ function DashboardMockup() {
             </div>
 
             {/* Chart + agents */}
-            <div style={{ display:'grid', gridTemplateColumns:'1.6fr 1fr', gap:14, flex:1 }}>
+            <div className="dash-chart-row" style={{ display:'grid', gridTemplateColumns:'1.6fr 1fr', gap:14, flex:1 }}>
               {/* Chart */}
               <div className="dash-chart" style={{
                 padding:18, borderRadius:14,
@@ -429,7 +429,7 @@ function DashboardMockup() {
               </div>
 
               {/* Agents */}
-              <div style={{
+              <div className="dash-agents" style={{
                 padding:14, borderRadius:14,
                 background:C.surface, border:`1px solid ${C.border}`,
                 display:'flex', flexDirection:'column', gap:8,
@@ -642,9 +642,9 @@ function CompareSection() {
             background:'rgba(255,255,255,.015)',
             border:`1px solid ${C.border}`,
           }}>
-            <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:28 }}>
+            <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:28, gap:12 }}>
               <div className="eyebrow" style={{ color:'#FF7A6B' }}>El viejo modo</div>
-              <div className="serif" style={{ fontSize:36, color:C.textDim, lineHeight:1 }}>~6 meses</div>
+              <div className="serif compare-time" style={{ fontSize:36, color:C.textDim, lineHeight:1 }}>~6 meses</div>
             </div>
             <h3 className="display" style={{ fontSize:28, color:'#fff', margin:'0 0 24px' }}>Hacerlo a mano.</h3>
             <ul style={{ listStyle:'none', padding:0, margin:0, display:'flex', flexDirection:'column', gap:14 }}>
@@ -664,9 +664,9 @@ function CompareSection() {
             border:`1px solid ${C.purple}40`,
             boxShadow:`0 0 60px ${C.purple}18`,
           }}>
-            <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:28 }}>
+            <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:28, gap:12 }}>
               <div className="eyebrow" style={{ color:C.purple }}>Con Zenix</div>
-              <div className="serif" style={{ fontSize:36, color:C.cream, lineHeight:1 }}>48 horas</div>
+              <div className="serif compare-time" style={{ fontSize:36, color:C.cream, lineHeight:1 }}>48 horas</div>
             </div>
             <h3 className="display" style={{ fontSize:28, color:'#fff', margin:'0 0 24px' }}>
               La fábrica trabaja por ti.
@@ -718,9 +718,9 @@ function ShowCard({ label, name, sub, accentColor, dark, FloatIcon, delay }) {
       }}/>
 
       {/* Top corner stat */}
-      <div style={{
+      <div className="show-card-top" style={{
         position:'absolute', top:24, left:24, right:24,
-        display:'flex', justifyContent:'space-between', alignItems:'center', zIndex:2,
+        display:'flex', justifyContent:'space-between', alignItems:'center', zIndex:2, gap:12,
       }}>
         <span style={{
           padding:'5px 12px', borderRadius:9999,
@@ -884,7 +884,7 @@ function FAQ() {
     <section id="faq" className="sec-pad" style={{ padding:'140px 0', background:C.bg }}>
       <div className="section-x" style={{ maxWidth:1320, margin:'0 auto', padding:'0 32px' }}>
         <div className="faq-grid" style={{ display:'grid', gridTemplateColumns:'1fr 1.4fr', gap:80, alignItems:'flex-start' }}>
-          <div style={{ position:'sticky', top:120 }}>
+          <div className="faq-side" style={{ position:'sticky', top:120 }}>
             <div style={{ marginBottom:18 }}><Eyebrow>Preguntas frecuentes</Eyebrow></div>
             <h2 className="display sec-title" style={{ fontSize:'clamp(36px,4.5vw,54px)', color:'#fff', margin:'0 0 20px', lineHeight:1 }}>
               Todo lo que querías<br/><span className="serif" style={{color:C.cream}}>preguntar.</span>
@@ -957,19 +957,19 @@ function CTA() {
               border:`1px solid ${C.purple}40`,
               borderRadius:28, padding:40,
             }}>
-              <div style={{
+              <div className="plan-badge" style={{
                 position:'absolute', top:-12, right:24,
                 padding:'5px 12px', borderRadius:9999,
                 background:C.purple, color:'#fff',
                 fontSize:10, fontWeight:700, letterSpacing:'.16em',
               }}>MÁS POPULAR</div>
 
-              <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:20 }}>
+              <div className="plan-head" style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:20, gap:16 }}>
                 <div>
                   <div className="eyebrow" style={{ color:C.purple, marginBottom:8 }}>Plan Industrial</div>
-                  <h3 className="display" style={{ fontSize:26, color:'#fff', margin:0 }}>Para creadores serios.</h3>
+                  <h3 className="display plan-title" style={{ fontSize:26, color:'#fff', margin:0 }}>Para creadores serios.</h3>
                 </div>
-                <Rocket size={26} style={{color:C.purple}}/>
+                <Rocket size={26} style={{color:C.purple, flexShrink:0}}/>
               </div>
 
               <div style={{ display:'flex', alignItems:'baseline', gap:8, marginBottom:6 }}>
@@ -1043,25 +1043,25 @@ function Footer() {
       <div className="section-x" style={{ maxWidth:1320, margin:'0 auto', padding:'0 32px' }}>
 
         {/* Big logo + tagline */}
-        <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end', flexWrap:'wrap', gap:32, marginBottom:64, paddingBottom:48, borderBottom:`1px solid ${C.border}` }}>
-          <div style={{ maxWidth:520 }}>
-            <div className="display" style={{ fontSize:'clamp(48px,7vw,96px)', color:'#fff', lineHeight:.9, letterSpacing:'-.04em' }}>
+        <div className="footer-hero" style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-end', flexWrap:'wrap', gap:32, marginBottom:64, paddingBottom:48, borderBottom:`1px solid ${C.border}` }}>
+          <div style={{ maxWidth:520, flex:'1 1 280px' }}>
+            <div className="display footer-bigname" style={{ fontSize:'clamp(48px,7vw,96px)', color:'#fff', lineHeight:.9, letterSpacing:'-.04em' }}>
               ZENIX<span className="text-gradient">.</span>
             </div>
-            <p className="serif" style={{ fontSize:24, color:C.textMut, marginTop:14, lineHeight:1.3 }}>
+            <p className="serif footer-tagline" style={{ fontSize:24, color:C.textMut, marginTop:14, lineHeight:1.3 }}>
               La fábrica autónoma de infoproductos.
             </p>
           </div>
-          <div style={{ display:'flex', flexDirection:'column', gap:10, minWidth:280 }}>
+          <div className="footer-newsletter" style={{ display:'flex', flexDirection:'column', gap:10, minWidth:0, width:'100%', maxWidth:360 }}>
             <div className="eyebrow" style={{ color:C.textDim }}>Newsletter</div>
             <div style={{ display:'flex', gap:0, padding:4, borderRadius:9999, background:C.surface, border:`1px solid ${C.border}` }}>
               <input placeholder="tu@email.com" style={{
-                flex:1, padding:'10px 16px', background:'transparent', border:'none',
+                flex:1, minWidth:0, padding:'10px 14px', background:'transparent', border:'none',
                 color:'#fff', fontSize:14, outline:'none',
               }}/>
               <button style={{
                 padding:'10px 18px', borderRadius:9999, border:'none', cursor:'pointer',
-                background:'#fff', color:'#000', fontSize:13, fontWeight:600,
+                background:'#fff', color:'#000', fontSize:13, fontWeight:600, flexShrink:0,
               }}>Suscribir</button>
             </div>
           </div>
