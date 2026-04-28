@@ -7,6 +7,10 @@ import {
   Activity, Bot, LineChart, Wand2, Rocket, Shield,
 } from 'lucide-react';
 
+// ─── App URL (login / signup destino) ───────────────────────────────────────
+const APP_URL = 'https://app.zenixmachine.com/login';
+const goToApp = () => window.open(APP_URL, '_blank', 'noopener,noreferrer');
+
 // ─── Design tokens ──────────────────────────────────────────────────────────
 const C = {
   bg:       '#060509',
@@ -115,7 +119,7 @@ function Navbar() {
           </div>
           <motion.button
             whileHover={{scale:1.03}} whileTap={{scale:0.97}}
-            onClick={() => document.getElementById('precios')?.scrollIntoView({behavior:'smooth'})}
+            onClick={goToApp}
             className="btn-primary"
             style={{
               marginLeft:10,
@@ -148,7 +152,7 @@ function Navbar() {
               <a key={l} href={href} onClick={()=>setOpen(false)}
                 style={{ color:'#fff', fontSize:18, fontWeight:600, textDecoration:'none', padding:'12px 8px', borderBottom:`1px solid ${C.border}` }}>{l}</a>
             ))}
-            <button onClick={()=>setOpen(false)}
+            <button onClick={()=>{ setOpen(false); goToApp(); }}
               style={{ marginTop:12, width:'100%', padding:'16px 0', background:C.purple, color:'#fff', border:'none', borderRadius:14, fontSize:15, fontWeight:700, cursor:'pointer' }}>
               Empezar Ahora
             </button>
@@ -229,7 +233,7 @@ function Hero() {
           <motion.div initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:.8,delay:.4}}
             className="hero-ctas" style={{ display:'flex', gap:14, justifyContent:'center', flexWrap:'wrap' }}>
             <motion.button whileHover={{scale:1.03}} whileTap={{scale:.97}}
-              onClick={() => document.getElementById('precios')?.scrollIntoView({behavior:'smooth'})}
+              onClick={goToApp}
               className="btn-primary"
               style={{
                 padding:'16px 28px', borderRadius:9999, border:'none', cursor:'pointer',
@@ -239,7 +243,7 @@ function Hero() {
               }}>
               Lanzar mi primer producto <ArrowRight size={16}/>
             </motion.button>
-            <button style={{
+            <button onClick={goToApp} style={{
               padding:'16px 28px', borderRadius:9999, cursor:'pointer',
               background:C.surface, color:C.text,
               border:`1px solid ${C.border}`, fontWeight:500, fontSize:15,
@@ -989,6 +993,7 @@ function CTA() {
               </ul>
 
               <motion.button whileHover={{scale:1.02}} whileTap={{scale:.98}} className="btn-primary"
+                onClick={goToApp}
                 style={{
                   width:'100%', padding:'16px 0', background:'#fff',
                   color:'#000', border:'none', borderRadius:14, fontWeight:600, fontSize:15,
